@@ -114,13 +114,15 @@ Rails.application.routes.draw do
 
   #------------------------------
 
+  get 'home/index'
+
   devise_for :users
-    devise_scope :user do
-    root to: "devise/sessions#new"
+
+  root to: "home#index"  # ✅ This is now a regular controller
 
 
   # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:
 
   # get "/your_first_screen" => "pages#first"
-  
+
 end
