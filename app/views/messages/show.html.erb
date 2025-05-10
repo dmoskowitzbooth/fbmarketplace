@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Message #<%= @the_message.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/messages">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_message/<%= @the_message.id %>">
+          Delete message
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Sender
+      </dt>
+      <dd>
+        <%= @the_message.sender_id %>
+      </dd>
+
+      <dt>
+        Receiver
+      </dt>
+      <dd>
+        <%= @the_message.receiver_id %>
+      </dd>
+
+      <dt>
+        Chain
+      </dt>
+      <dd>
+        <%= @the_message.chain_id %>
+      </dd>
+
+      <dt>
+        Msg text
+      </dt>
+      <dd>
+        <%= @the_message.msg_text %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_message.status %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit message
+    </h2>
+
+    <form action="/modify_message/<%= @the_message.id %>"  method="post" >
+      <div>
+        <label for="sender_id_box">
+          Sender
+        </label>
+
+        <input type="text" id="sender_id_box" name="query_sender_id" value="<%= @the_message.sender_id %>">
+      </div>
+
+      <div>
+        <label for="receiver_id_box">
+          Receiver
+        </label>
+
+        <input type="text" id="receiver_id_box" name="query_receiver_id" value="<%= @the_message.receiver_id %>">
+      </div>
+
+      <div>
+        <label for="chain_id_box">
+          Chain
+        </label>
+
+        <input type="text" id="chain_id_box" name="query_chain_id" value="<%= @the_message.chain_id %>">
+      </div>
+
+      <div>
+        <label for="msg_text_box">
+          Msg text
+        </label>
+
+        <input type="text" id="msg_text_box" name="query_msg_text" value="<%= @the_message.msg_text %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_message.status %>">
+      </div>
+
+      <button>
+        Update message
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

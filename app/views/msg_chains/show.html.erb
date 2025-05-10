@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Msg chain #<%= @the_msg_chain.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/msg_chains">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_msg_chain/<%= @the_msg_chain.id %>">
+          Delete msg chain
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Sender
+      </dt>
+      <dd>
+        <%= @the_msg_chain.sender_id %>
+      </dd>
+
+      <dt>
+        Receiver
+      </dt>
+      <dd>
+        <%= @the_msg_chain.receiver_id %>
+      </dd>
+
+      <dt>
+        Subject
+      </dt>
+      <dd>
+        <%= @the_msg_chain.subject %>
+      </dd>
+
+      <dt>
+        Item
+      </dt>
+      <dd>
+        <%= @the_msg_chain.item_id %>
+      </dd>
+
+      <dt>
+        Messages count
+      </dt>
+      <dd>
+        <%= @the_msg_chain.messages_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_msg_chain.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_msg_chain.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit msg chain
+    </h2>
+
+    <form action="/modify_msg_chain/<%= @the_msg_chain.id %>"  method="post" >
+      <div>
+        <label for="sender_id_box">
+          Sender
+        </label>
+
+        <input type="text" id="sender_id_box" name="query_sender_id" value="<%= @the_msg_chain.sender_id %>">
+      </div>
+
+      <div>
+        <label for="receiver_id_box">
+          Receiver
+        </label>
+
+        <input type="text" id="receiver_id_box" name="query_receiver_id" value="<%= @the_msg_chain.receiver_id %>">
+      </div>
+
+      <div>
+        <label for="subject_box">
+          Subject
+        </label>
+
+        <input type="text" id="subject_box" name="query_subject" value="<%= @the_msg_chain.subject %>">
+      </div>
+
+      <div>
+        <label for="item_id_box">
+          Item
+        </label>
+
+        <input type="text" id="item_id_box" name="query_item_id" value="<%= @the_msg_chain.item_id %>">
+      </div>
+
+      <div>
+        <label for="messages_count_box">
+          Messages count
+        </label>
+
+        <input type="text" id="messages_count_box" name="query_messages_count" value="<%= @the_msg_chain.messages_count %>">
+      </div>
+
+      <button>
+        Update msg chain
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

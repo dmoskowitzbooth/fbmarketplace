@@ -1,0 +1,236 @@
+<div>
+  <div>
+    <h1>
+      Item #<%= @the_item.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/items">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_item/<%= @the_item.id %>">
+          Delete item
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_item.name %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_item.description %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_item.category %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @the_item.image %>
+      </dd>
+
+      <dt>
+        Seller
+      </dt>
+      <dd>
+        <%= @the_item.seller_id %>
+      </dd>
+
+      <dt>
+        Asking price
+      </dt>
+      <dd>
+        <%= @the_item.asking_price %>
+      </dd>
+
+      <dt>
+        Og purchase price
+      </dt>
+      <dd>
+        <%= @the_item.og_purchase_price %>
+      </dd>
+
+      <dt>
+        Address
+      </dt>
+      <dd>
+        <%= @the_item.address %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_item.status %>
+      </dd>
+
+      <dt>
+        Offers count
+      </dt>
+      <dd>
+        <%= @the_item.offers_count %>
+      </dd>
+
+      <dt>
+        Msg chains count
+      </dt>
+      <dd>
+        <%= @the_item.msg_chains_count %>
+      </dd>
+
+      <dt>
+        Reviews count
+      </dt>
+      <dd>
+        <%= @the_item.reviews_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_item.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_item.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit item
+    </h2>
+
+    <form action="/modify_item/<%= @the_item.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_item.name %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_item.description %></textarea>
+      </div>
+
+      <div>
+        <label for="category_box">
+          Category
+        </label>
+
+        <input type="text" id="category_box" name="query_category" value="<%= @the_item.category %>">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_item.image %>">
+      </div>
+
+      <div>
+        <label for="seller_id_box">
+          Seller
+        </label>
+
+        <input type="text" id="seller_id_box" name="query_seller_id" value="<%= @the_item.seller_id %>">
+      </div>
+
+      <div>
+        <label for="asking_price_box">
+          Asking price
+        </label>
+
+        <input type="text" id="asking_price_box" name="query_asking_price" value="<%= @the_item.asking_price %>">
+      </div>
+
+      <div>
+        <label for="og_purchase_price_box">
+          Og purchase price
+        </label>
+
+        <input type="text" id="og_purchase_price_box" name="query_og_purchase_price" value="<%= @the_item.og_purchase_price %>">
+      </div>
+
+      <div>
+        <label for="address_box">
+          Address
+        </label>
+
+        <input type="text" id="address_box" name="query_address" value="<%= @the_item.address %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_item.status %>">
+      </div>
+
+      <div>
+        <label for="offers_count_box">
+          Offers count
+        </label>
+
+        <input type="text" id="offers_count_box" name="query_offers_count" value="<%= @the_item.offers_count %>">
+      </div>
+
+      <div>
+        <label for="msg_chains_count_box">
+          Msg chains count
+        </label>
+
+        <input type="text" id="msg_chains_count_box" name="query_msg_chains_count" value="<%= @the_item.msg_chains_count %>">
+      </div>
+
+      <div>
+        <label for="reviews_count_box">
+          Reviews count
+        </label>
+
+        <input type="text" id="reviews_count_box" name="query_reviews_count" value="<%= @the_item.reviews_count %>">
+      </div>
+
+      <button>
+        Update item
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,146 @@
+<div>
+  <div>
+    <h1>
+      Review #<%= @the_review.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/reviews">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_review/<%= @the_review.id %>">
+          Delete review
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Rating
+      </dt>
+      <dd>
+        <%= @the_review.rating %>
+      </dd>
+
+      <dt>
+        Author
+      </dt>
+      <dd>
+        <%= @the_review.author_id %>
+      </dd>
+
+      <dt>
+        User about
+      </dt>
+      <dd>
+        <%= @the_review.user_about_id %>
+      </dd>
+
+      <dt>
+        Text
+      </dt>
+      <dd>
+        <%= @the_review.text %>
+      </dd>
+
+      <dt>
+        Would to again
+      </dt>
+      <dd>
+        <%= @the_review.would_to_again %>
+      </dd>
+
+      <dt>
+        Item
+      </dt>
+      <dd>
+        <%= @the_review.item_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_review.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_review.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit review
+    </h2>
+
+    <form action="/modify_review/<%= @the_review.id %>"  method="post" >
+      <div>
+        <label for="rating_box">
+          Rating
+        </label>
+
+        <input type="text" id="rating_box" name="query_rating" value="<%= @the_review.rating %>">
+      </div>
+
+      <div>
+        <label for="author_id_box">
+          Author
+        </label>
+
+        <input type="text" id="author_id_box" name="query_author_id" value="<%= @the_review.author_id %>">
+      </div>
+
+      <div>
+        <label for="user_about_id_box">
+          User about
+        </label>
+
+        <input type="text" id="user_about_id_box" name="query_user_about_id" value="<%= @the_review.user_about_id %>">
+      </div>
+
+      <div>
+        <label for="text_box">
+          Text
+        </label>
+
+        <input type="text" id="text_box" name="query_text" value="<%= @the_review.text %>">
+      </div>
+
+      <div>
+        <label for="would_to_again_box">
+          Would to again
+        </label>
+
+        <input type="text" id="would_to_again_box" name="query_would_to_again" value="<%= @the_review.would_to_again %>">
+      </div>
+
+      <div>
+        <label for="item_id_box">
+          Item
+        </label>
+
+        <input type="text" id="item_id_box" name="query_item_id" value="<%= @the_review.item_id %>">
+      </div>
+
+      <button>
+        Update review
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

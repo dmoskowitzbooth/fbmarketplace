@@ -1,0 +1,177 @@
+<div>
+  <div>
+    <h1>
+      Sale #<%= @the_sale.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/sales">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_sale/<%= @the_sale.id %>">
+          Delete sale
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Item
+      </dt>
+      <dd>
+        <%= @the_sale.item_id %>
+      </dd>
+
+      <dt>
+        Buyer
+      </dt>
+      <dd>
+        <%= @the_sale.buyer_id %>
+      </dd>
+
+      <dt>
+        Seller
+      </dt>
+      <dd>
+        <%= @the_sale.seller_id %>
+      </dd>
+
+      <dt>
+        Accepted offer
+      </dt>
+      <dd>
+        <%= @the_sale.accepted_offer_id %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_sale.status %>
+      </dd>
+
+      <dt>
+        Final price
+      </dt>
+      <dd>
+        <%= @the_sale.final_price %>
+      </dd>
+
+      <dt>
+        Pu location
+      </dt>
+      <dd>
+        <%= @the_sale.pu_location %>
+      </dd>
+
+      <dt>
+        Pu date
+      </dt>
+      <dd>
+        <%= @the_sale.pu_date %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_sale.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_sale.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit sale
+    </h2>
+
+    <form action="/modify_sale/<%= @the_sale.id %>"  method="post" >
+      <div>
+        <label for="item_id_box">
+          Item
+        </label>
+
+        <input type="text" id="item_id_box" name="query_item_id" value="<%= @the_sale.item_id %>">
+      </div>
+
+      <div>
+        <label for="buyer_id_box">
+          Buyer
+        </label>
+
+        <input type="text" id="buyer_id_box" name="query_buyer_id" value="<%= @the_sale.buyer_id %>">
+      </div>
+
+      <div>
+        <label for="seller_id_box">
+          Seller
+        </label>
+
+        <input type="text" id="seller_id_box" name="query_seller_id" value="<%= @the_sale.seller_id %>">
+      </div>
+
+      <div>
+        <label for="accepted_offer_id_box">
+          Accepted offer
+        </label>
+
+        <input type="text" id="accepted_offer_id_box" name="query_accepted_offer_id" value="<%= @the_sale.accepted_offer_id %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_sale.status %>">
+      </div>
+
+      <div>
+        <label for="final_price_box">
+          Final price
+        </label>
+
+        <input type="text" id="final_price_box" name="query_final_price" value="<%= @the_sale.final_price %>">
+      </div>
+
+      <div>
+        <label for="pu_location_box">
+          Pu location
+        </label>
+
+        <input type="text" id="pu_location_box" name="query_pu_location" value="<%= @the_sale.pu_location %>">
+      </div>
+
+      <div>
+        <label for="pu_date_box">
+          Pu date
+        </label>
+
+        <input type="datetime-local" id="pu_date_box" name="query_pu_date"
+         value="<%= @the_sale.pu_date %>">
+      </div>
+
+      <button>
+        Update sale
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

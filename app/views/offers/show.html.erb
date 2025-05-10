@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Offer #<%= @the_offer.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/offers">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_offer/<%= @the_offer.id %>">
+          Delete offer
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Item
+      </dt>
+      <dd>
+        <%= @the_offer.item_id %>
+      </dd>
+
+      <dt>
+        Offer
+      </dt>
+      <dd>
+        <%= @the_offer.offer %>
+      </dd>
+
+      <dt>
+        Notes
+      </dt>
+      <dd>
+        <%= @the_offer.notes %>
+      </dd>
+
+      <dt>
+        Submitter
+      </dt>
+      <dd>
+        <%= @the_offer.submitter_id %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_offer.status %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_offer.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_offer.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit offer
+    </h2>
+
+    <form action="/modify_offer/<%= @the_offer.id %>"  method="post" >
+      <div>
+        <label for="item_id_box">
+          Item
+        </label>
+
+        <input type="text" id="item_id_box" name="query_item_id" value="<%= @the_offer.item_id %>">
+      </div>
+
+      <div>
+        <label for="offer_box">
+          Offer
+        </label>
+
+        <input type="text" id="offer_box" name="query_offer" value="<%= @the_offer.offer %>">
+      </div>
+
+      <div>
+        <label for="notes_box">
+          Notes
+        </label>
+
+        <input type="text" id="notes_box" name="query_notes" value="<%= @the_offer.notes %>">
+      </div>
+
+      <div>
+        <label for="submitter_id_box">
+          Submitter
+        </label>
+
+        <input type="text" id="submitter_id_box" name="query_submitter_id" value="<%= @the_offer.submitter_id %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_offer.status %>">
+      </div>
+
+      <button>
+        Update offer
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

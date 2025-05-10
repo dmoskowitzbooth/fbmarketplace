@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all offers
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new offer
+    </h2>
+
+    <form action="/insert_offer" method="post">
+      <div>
+        <label for="item_id_box">
+          Item
+        </label>
+
+        <input type="text" id="item_id_box" name="query_item_id">
+      </div>
+
+      <div>
+        <label for="offer_box">
+          Offer
+        </label>
+
+        <input type="text" id="offer_box" name="query_offer">
+      </div>
+
+      <div>
+        <label for="notes_box">
+          Notes
+        </label>
+
+        <input type="text" id="notes_box" name="query_notes">
+      </div>
+
+      <div>
+        <label for="submitter_id_box">
+          Submitter
+        </label>
+
+        <input type="text" id="submitter_id_box" name="query_submitter_id">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status">
+      </div>
+
+      <button>
+        Create offer
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Item
+        </th>
+
+        <th>
+          Offer
+        </th>
+
+        <th>
+          Notes
+        </th>
+
+        <th>
+          Submitter
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_offers.each do |an_offer| %>
+      <tr>
+        <td>
+          <%= an_offer.id %>
+        </td>
+
+        <td>
+          <%= an_offer.item_id %>
+        </td>
+
+        <td>
+          <%= an_offer.offer %>
+        </td>
+
+        <td>
+          <%= an_offer.notes %>
+        </td>
+
+        <td>
+          <%= an_offer.submitter_id %>
+        </td>
+
+        <td>
+          <%= an_offer.status %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_offer.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_offer.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/offers/<%= an_offer.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
