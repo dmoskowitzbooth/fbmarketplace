@@ -14,109 +14,118 @@
       Add a new item
     </h2>
 
-    <form action="/insert_item" method="post">
-      <div>
-        <label for="name_box">
-          Name
-        </label>
+<form action="/insert_item" method="post" enctype="multipart/form-data" class="container mt-4">
+  <h2 class="mb-4">List an Item for Sale</h2>
 
-        <input type="text" id="name_box" name="query_name">
+  <div class="mb-3">
+    <label for="name_box" class="form-label">Name</label>
+    <input type="text" id="name_box" name="query_name" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label for="description_box" class="form-label">Description</label>
+    <textarea id="description_box" name="query_description" rows="3" class="form-control"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="category_box" class="form-label">Category</label>
+    <input type="text" id="category_box" name="query_category" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label for="photo_box" class="form-label">Image (Camera Only)</label>
+    <input type="file" id="photo_box" name="query_photo" accept="image/*" capture="environment" class="form-control">
+  </div>
+
+<div class="mb-3">
+  <label class="form-label">Seller ID</label>
+  <input type="text"
+         name="query_seller_id"
+         value="<%= current_user.id %>"
+         readonly
+         class="form-control-plaintext" />
+</div>
+
+  <div class="row">
+      <div class="col-md-4 mb-3">
+      <label for="sale_type_box" class="form-label">Sale Type</label>
+      <%= select_tag "query_sale_type",
+     options_for_select(["Auction", "Fixed Price", "Free"]),
+     class: "form-select" %>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="asking_price_box" class="form-label">Asking Price</label>
+      <input type="text" id="asking_price_box" name="query_asking_price" class="form-control">
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="og_purchase_price_box" class="form-label">Original Purchase Price</label>
+      <input type="text" id="og_purchase_price_box" name="query_og_purchase_price" class="form-control">
+    </div>
+  </div>
+
+  <fieldset class="border p-3 mb-4">
+    <legend class="w-auto px-2">Address</legend>
+
+    <div class="mb-3">
+      <label for="street_box" class="form-label">Street</label>
+      <input type="text" id="street_box" name="query_address_street" class="form-control">
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="city_box" class="form-label">City</label>
+        <input type="text" id="city_box" name="query_address_city" class="form-control">
       </div>
-
-      <div>
-        <label for="description_box">
-          Description
-        </label>
-
-        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      <div class="col-md-6 mb-3">
+        <label for="state_box" class="form-label">State</label>
+        <input type="text" id="state_box" name="query_address_state" class="form-control">
       </div>
+    </div>
 
-      <div>
-        <label for="category_box">
-          Category
-        </label>
-
-        <input type="text" id="category_box" name="query_category">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="zip_box" class="form-label">ZIP Code</label>
+        <input type="text" id="zip_box" name="query_address_zip" class="form-control">
       </div>
-
-      <div>
-        <label for="image_box">
-          Image
-        </label>
-
-        <input type="text" id="image_box" name="query_image">
+      <div class="col-md-6 mb-3">
+        <label for="country_box" class="form-label">Country</label>
+        <input type="text" id="country_box" name="query_address_country" class="form-control">
       </div>
+    </div>
+  </fieldset>
 
-      <div>
-        <label for="seller_id_box">
-          Seller
-        </label>
+  <div class="mb-3">
+    <label for="status_box" class="form-label">Status</label>
+    <input type="text" id="status_box" name="query_status" class="form-control">
+  </div>
 
-        <input type="text" id="seller_id_box" name="query_seller_id">
-      </div>
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <label for="offers_count_box" class="form-label">Offers Count</label>
+      <input type="text" id="offers_count_box" name="query_offers_count" class="form-control">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="msg_chains_count_box" class="form-label">Message Chains Count</label>
+      <input type="text" id="msg_chains_count_box" name="query_msg_chains_count" class="form-control">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="reviews_count_box" class="form-label">Reviews Count</label>
+      <input type="text" id="reviews_count_box" name="query_reviews_count" class="form-control">
+    </div>
+  </div>
 
-      <div>
-        <label for="asking_price_box">
-          Asking price
-        </label>
+  <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-primary">Create Item</button>
+  </div>
+</form>
 
-        <input type="text" id="asking_price_box" name="query_asking_price">
-      </div>
-
-      <div>
-        <label for="og_purchase_price_box">
-          Og purchase price
-        </label>
-
-        <input type="text" id="og_purchase_price_box" name="query_og_purchase_price">
-      </div>
-
-      <div>
-        <label for="address_box">
-          Address
-        </label>
-
-        <input type="text" id="address_box" name="query_address">
-      </div>
-
-      <div>
-        <label for="status_box">
-          Status
-        </label>
-
-        <input type="text" id="status_box" name="query_status">
-      </div>
-
-      <div>
-        <label for="offers_count_box">
-          Offers count
-        </label>
-
-        <input type="text" id="offers_count_box" name="query_offers_count">
-      </div>
-
-      <div>
-        <label for="msg_chains_count_box">
-          Msg chains count
-        </label>
-
-        <input type="text" id="msg_chains_count_box" name="query_msg_chains_count">
-      </div>
-
-      <div>
-        <label for="reviews_count_box">
-          Reviews count
-        </label>
-
-        <input type="text" id="reviews_count_box" name="query_reviews_count">
-      </div>
-
-      <button>
-        Create item
-      </button>
-    </form>
   </div>
 </div>
+
+
+
 
 <hr>
 <div>

@@ -13,6 +13,7 @@
 #  offers_count      :integer
 #  og_purchase_price :float
 #  reviews_count     :integer
+#  sale_type         :string
 #  status            :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
