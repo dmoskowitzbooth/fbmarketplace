@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>My Sales</h2>
+    <%= link_to "Sell New Item", new_item_path, class: "btn btn-success" %>
+  </div>
+
+  <% if @my_items.any? %>
+    <div class="row">
+      <% @my_items.each do |item| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <%# If item has an image you can use image_tag here %>
+            <div class="card-body">
+              <h5 class="card-title"><%= item.name %></h5>
+              <p class="card-text"><%= truncate(item.description, length: 100) %></p>
+              <p class="card-text"><strong>Price:</strong> $<%= item.asking_price %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>You haven’t listed anything yet. Click “Sell New Item” to get started.</p>
+  <% end %>
+</div>

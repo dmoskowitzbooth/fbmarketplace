@@ -10,6 +10,8 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  items_count            :integer
+#  latitude               :float
+#  longitude              :float
 #  messages_count         :integer
 #  messages_rcvd_count    :integer
 #  msg_chains_count       :integer

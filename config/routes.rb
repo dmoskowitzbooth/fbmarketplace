@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   get 'home/index'
   # Routes for the Sale resource:
+  resources :items
 
   # CREATE
   post("/insert_sale", { :controller => "sales", :action => "create" })
@@ -112,13 +114,25 @@ Rails.application.routes.draw do
   # DELETE
   get("/delete_item/:path_id", { :controller => "items", :action => "destroy" })
 
+  get "/my_sales", to: "items#my_sales", as: "my_sales"
+
+  post "/update_location", to: "users#update_location"
+
+
   #------------------------------
 
   get 'home/index'
 
   devise_for :users
 
-  root to: "home#index"  # ✅ This is now a regular controller
+  authenticated :user do
+  root to: "dashboard#index", as: :authenticated_root
+end
+
+unauthenticated do
+  root to: "devise/sessions#new"
+end
+
 
 
   # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:

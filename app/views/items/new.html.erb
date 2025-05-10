@@ -1,0 +1,113 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Sell Something</h2>
+
+  <form action="/insert_item" method="post" enctype="multipart/form-data">
+    <h4 class="mb-4">Tell us what you're selling</h4>
+
+    <div class="mb-3">
+      <label for="name_box" class="form-label">Name</label>
+      <input type="text" id="name_box" name="query_name" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="description_box" class="form-label">Description</label>
+      <textarea id="description_box" name="query_description" rows="3" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="category_box" class="form-label">Category</label>
+      <input type="text" id="category_box" name="query_category" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="photo_box" class="form-label">Image (Camera Only)</label>
+      <input type="file" id="photo_box" name="query_photo" accept="image/*" capture="environment" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Seller ID</label>
+      <input type="text" name="query_seller_id" value="<%= current_user.id %>" readonly class="form-control-plaintext" />
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="sale_type_box" class="form-label">Sale Type</label>
+        <%= select_tag "query_sale_type", options_for_select(["Auction", "Fixed Price", "Free"]), class: "form-select" %>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="asking_price_box" class="form-label">Asking Price</label>
+        <input type="text" id="asking_price_box" name="query_asking_price" class="form-control">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="og_purchase_price_box" class="form-label">Original Purchase Price</label>
+        <input type="text" id="og_purchase_price_box" name="query_og_purchase_price" class="form-control">
+      </div>
+    </div>
+
+    <fieldset class="border p-3 mb-4">
+      <legend class="w-auto px-2">Address</legend>
+
+      <div class="mb-3">
+        <label for="address_search" class="form-label">Search Address</label>
+        <input type="text" id="address_search" class="form-control" placeholder="Start typing your address">
+      </div>
+
+      <%= hidden_field_tag :query_address_street, "", id: "street" %>
+      <%= hidden_field_tag :query_address_city, "", id: "city" %>
+      <%= hidden_field_tag :query_address_state, "", id: "state" %>
+      <%= hidden_field_tag :query_address_zip, "", id: "zip" %>
+      <%= hidden_field_tag :query_address_country, "", id: "country" %>
+      <%= hidden_field_tag :query_latitude, "", id: "latitude" %>
+      <%= hidden_field_tag :query_longitude, "", id: "longitude" %>
+    </fieldset>
+
+    <div class="mb-3">
+      <label for="status_box" class="form-label">Status</label>
+      <input type="text" id="status_box" name="query_status" class="form-control">
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="offers_count_box" class="form-label">Offers Count</label>
+        <input type="text" id="offers_count_box" name="query_offers_count" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="msg_chains_count_box" class="form-label">Message Chains Count</label>
+        <input type="text" id="msg_chains_count_box" name="query_msg_chains_count" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="reviews_count_box" class="form-label">Reviews Count</label>
+        <input type="text" id="reviews_count_box" name="query_reviews_count" class="form-control">
+      </div>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Create Item</button>
+    </div>
+  </form>
+</div>
+
+<!-- Photon Autocomplete Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof PhotonAddressAutocomplete === 'function') {
+      new PhotonAddressAutocomplete(document.getElementById("address_search"), {
+        placeholder: "Start typing an address",
+        onSelected: function (place) {
+          const props = place.properties;
+          document.getElementById("street").value = props.name || "";
+          document.getElementById("city").value = props.city || "";
+          document.getElementById("state").value = props.state || "";
+          document.getElementById("zip").value = props.postcode || "";
+          document.getElementById("country").value = props.country || "";
+          document.getElementById("latitude").value = place.geometry.coordinates[1];
+          document.getElementById("longitude").value = place.geometry.coordinates[0];
+        }
+      });
+    } else {
+      console.warn("PhotonAddressAutocomplete not found. Make sure the script is loaded.");
+    }
+  });
+</script>

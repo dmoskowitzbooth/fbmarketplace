@@ -73,4 +73,9 @@ class ItemsController < ApplicationController
 
     redirect_to("/items", { :notice => "Item deleted successfully."} )
   end
+
+  def my_sales
+  @my_items = Item.where(seller_id: current_user.id)
+  end
+
 end
