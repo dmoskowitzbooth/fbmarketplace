@@ -115,8 +115,9 @@ Rails.application.routes.draw do
   #------------------------------
 
   devise_for :users
+    devise_scope :user do
+    root to: "devise/sessions#new"
 
-    root to: "home#index"
 
   # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:
 
